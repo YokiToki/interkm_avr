@@ -19,25 +19,25 @@ cmake_minimum_required(VERSION 2.8)
 ##################################################################################
 # tools to be used for programming the AVR
 ##################################################################################
-set(AVR_UPLOADTOOL avrdude)
-set(AVR_PROGRAMMER usbasp)
-set(AVR_UPLOADTOOL_PORT usb)
+#set(AVR_UPLOADTOOL avrdude)
+#set(AVR_PROGRAMMER usbasp)
+#set(AVR_UPLOADTOOL_PORT usb)
 
 #### For Arduino bootloader:
-#set(AVR_PROGRAMMER arduino)
-#set(AVR_UPLOADTOOL_PORT /dev/tty.wchusbserial1420)
-#set(AVR_UPLOADTOOL_BITRATE 57600)
+set(AVR_PROGRAMMER arduino)
+set(AVR_UPLOADTOOL_PORT /dev/ttyACM0)
+set(AVR_UPLOADTOOL_BITRATE 115200)
 
 
 # AVR and fuses needs to be set
 set(AVR_MCU atmega328p)
 set(AVR_H_FUSE 0xDA)
 set(AVR_L_FUSE 0xFF)
-set(AVR_EX_FUSE 0×05)
+set(AVR_EX_FUSE 0x05)
 set(MCU_SPEED "16000000UL")
 
 ### printf support
-#set(EXTRA_FLAGS "-Wl,-u,vfprintf -lprintf_min") 
+set(EXTRA_FLAGS "-Wl,-u,vfprintf -lprintf_min")
 
 ### END TOOLCHAIN SETUP AREA #############################################
 INCLUDE(generic-gcc-avr.cmake)
@@ -46,7 +46,7 @@ INCLUDE(generic-gcc-avr.cmake)
 ##########################################################################
 # name your project
 ##########################################################################
-project(avr_project_template)
+project(interkm_avr)
 
 ##################################################################################
 # add all sources and headers from ./src
